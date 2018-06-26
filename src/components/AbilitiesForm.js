@@ -1,69 +1,79 @@
 import React from 'react';
 
 export default class AbilitiesForm extends React.Component {
-    state = {
-        strength: undefined,
-        intelligence: undefined,
-        wisdom: undefined,
-        dexterity: undefined,
-        constitution: undefined,
-        charisma: undefined
-    };
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            strength: undefined,
+            intelligence: undefined,
+            wisdom: undefined,
+            dexterity: undefined,
+            constitution: undefined,
+            charisma: undefined,
+            error: ''
+        };
+    }
     
-    onRollStrength = () => {
-        let rollValue = Math.floor(Math.random() * ((20 + 1) - 1)) + 1;
-        this.setState(() => ({strength: rollValue}));
-    };
-    
-    onRollIntelligence = () => {
-        let rollValue = Math.floor(Math.random() * ((20 + 1) - 1)) + 1;
-        this.setState(() => ({intelligence: rollValue}));
-    };
-    
-    onRollWisdom = () => {
-        let rollValue = Math.floor(Math.random() * ((20 + 1) - 1)) + 1;
-        this.setState(() => ({wisdom: rollValue}));
-    };
-    
-    onRollDexterity = () => {
-        let rollValue = Math.floor(Math.random() * ((20 + 1) - 1)) + 1;
-        this.setState(() => ({dexterity: rollValue}));
-    };
-    
-    onRollConstitution = () => {
-        let rollValue = Math.floor(Math.random() * ((20 + 1) - 1)) + 1;
-        this.setState(() => ({constitution: rollValue}));
-    };
-    
-    onRollCharisma = () => {
-        let rollValue = Math.floor(Math.random() * ((20 + 1) - 1)) + 1;
-        this.setState(() => ({charisma: rollValue}));
-    };
-    
-    render() {
+    render(){
+        
+        
         return (
             <div>
-                <form>
-                    <button type="button" onClick={this.onRollStrength} disabled={typeof this.state.strength != 'undefined'}>Strength</button>
-                    <p>Strength: {typeof this.state.strength == 'undefined' ? 'Roll to determine Strength' : this.state.strength }</p>
-                    
-                    <button type="button" onClick={this.onRollIntelligence} disabled={typeof this.state.intelligence != 'undefined'}>Intelligence</button>
-                    <p>Intelligence: {typeof this.state.intelligence == 'undefined' ? 'Roll to determine Intelligence' : this.state.intelligence }</p>
-                    
-                    <button type="button" onClick={this.onRollWisdom} disabled={typeof this.state.wisdom != 'undefined'}>Wisdom</button>
-                    <p>Wisdom: {typeof this.state.wisdom == 'undefined' ? 'Roll to determine Wisdom' : this.state.wisdom }</p>
-                    
-                    <button type="button" onClick={this.onRollDexterity} disabled={typeof this.state.dexterity != 'undefined'}>Dexterity</button>
-                    <p>Dexterity: {typeof this.state.dexterity == 'undefined' ? 'Roll to determine Dexterity' : this.state.dexterity }</p>
-                   
-                    <button type="button" onClick={this.onRollConstitution} disabled={typeof this.state.constitution != 'undefined'}>Constitution</button>
-                    <p>Constitution: {typeof this.state.constitution == 'undefined' ? 'Roll to determine Constitution' : this.state.constitution }</p>
-                    
-                    <button type="button" onClick={this.onRollCharisma} disabled={typeof this.state.charisma != 'undefined'}>Charisma</button>
-                    <p>Charisma: {typeof this.state.charisma == 'undefined' ? 'Roll to determine Charisma' : this.state.charisma }</p>
-                    
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.onSubmit} >
+                    {this.renderAttribute('Strength', 'strength')}
+                    {this.renderAttribute('Intelligence', 'intelligence')}
+                    {this.renderAttribute('Wisdom', 'wisdom')}
+                    {this.renderAttribute('Dexterity', 'dexterity')}
+                    {this.renderAttribute('Constitution', 'constitution')}
+                    {this.renderAttribute('Charisma', 'charisma')}
+                    <button>Next Step</button>
                 </form>
             </div>
         );
+    }
+    renderAttribute = (label, attributeKey) => {
+        const attributeValue = this.state[attributeKey];
+        const isDefined = attributeValue !== undefined;
+        const message = label + ': ' + (isDefined? attributeValue: 'Roll to determine');
+        return(
+            <div>
+                <button type="button" onClick={()=>{this.onRoll(attributeKey)}} disabled={isDefined}>{label}</button>
+                <p>{message}</p>
+            </div>
+        );
+    }
+    
+    onRoll = (attributeKey) => {
+        const rollValue = Math.floor(Math.random()*20) + 1;
+        this.setState(() => ({
+            [attributeKey]: rollValue,
+        }));
+    }
+    
+    onSubmit = (e) => {
+        e.preventDefault();
+        if(!this.state.strength || !this.state.intelligence || !this.state.wisdom || !this.state.dexterity || !this.state.constitution || !this.state.charisma) {
+            this.setState(() => ({
+                error: 'Please roll all scores'
+            }));
+        } else {
+            this.setState(() => ({
+                error: ''
+            }));
+            this.props.onSubmit({
+                abilities: {
+                    strength: this.state.strength,
+                    intelligence: this.state.intelligence,
+                    wisdom: this.state.wisdom,
+                    dexterity: this.state.dexterity,
+                    constitution: this.state.constitution,
+                    charisma: this.state.charisma
+                },
+                name: 'Test',
+                charClass: 'test'
+            });
+        } 
     }
 }
