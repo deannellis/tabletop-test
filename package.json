@@ -7,6 +7,7 @@
   "scripts": {
     "serve": "live-server public/",
     "build": "webpack",
+    "local-server": "webpack-dev-server",
     "dev-server": "webpack-dev-server --host $IP --public $C9_HOSTNAME"
   },
   "dependencies": {
