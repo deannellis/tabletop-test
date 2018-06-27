@@ -26,5 +26,10 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         historyApiFallback: true
-    }
+    },
+    resolve: {
+        alias: {
+            actions: path.resolve('src/actions'),
+        },
+    },
 };
