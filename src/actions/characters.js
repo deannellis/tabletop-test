@@ -1,6 +1,9 @@
 import uuid from 'uuid';
 
 // ADD_CHARACTER
+import actionIds from 'actions/actionIds';
+const {ADD_CHARACTER, REMOVE_CHARACTER, EDIT_CHARACTER} = actionIds;
+
 export const addCharacter = (
     {
         abilities = {
@@ -19,7 +22,7 @@ export const addCharacter = (
         description = ''
     } = {}
 ) => ({
-    type: 'ADD_CHARACTER',
+    type: ADD_CHARACTER,
     character: {
         id: uuid(),
         abilities,
@@ -35,13 +38,13 @@ export const addCharacter = (
 // REMOVE_CHARACTER
 
 export const removeCharacter = ({ id } = {}) => ({
-    type: 'REMOVE_CHARACTER',
+    type: REMOVE_CHARACTER,
     id
 });
 
 // EDIT_CHARACTER
 export const editCharacter = (id, updates) => ({
-    type: 'EDIT_CHARACTER',
+    type: EDIT_CHARACTER,
     id,
     updates
 });
