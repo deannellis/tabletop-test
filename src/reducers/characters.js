@@ -9,7 +9,7 @@ export default ( state = charactersReducerDefaultState, action ) => {
                 ...state,
                 action.character
             ];
-        case ADD_CHARACTER:
+        case REMOVE_CHARACTER:
             return state.filter(({ id }) => {
                 return id !== action.id;
             });
@@ -21,7 +21,7 @@ export default ( state = charactersReducerDefaultState, action ) => {
                         ...action.updates
                     }
                 } else {
-                    return 
+                    return character;
                 }
             });
         default:
