@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import DetailsForm from './DetailsForm';
+import { editCharacter } from '../actions/characters';
 
-const NewDetailsPage = () => (
+const NewDetailsPage = (props) => (
     <div>
-        Create Character Step 4
-        <Link to="new-char-step-5">Step 5</Link>
+        <DetailsForm 
+            onSubmit={(id, character) => {
+                props.dispatch(editCharacter(id, character));
+                props.history.push('/new-char-step-5');
+            }}
+        />
     </div>
 );
 
-export default NewDetailsPage;
+export default connect()(NewDetailsPage);

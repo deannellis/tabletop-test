@@ -7,19 +7,20 @@ const {ADD_CHARACTER, REMOVE_CHARACTER, EDIT_CHARACTER} = actionIds;
 export const addCharacter = (
     {
         abilities = {
-            strength: 0,
-            intelligence: 0,
-            wisdom: 0,
-            dexterity: 0,
-            constitution: 0,
-            charisma: 0
+            strength: 9,
+            intelligence: 9,
+            wisdom: 9,
+            dexterity: 9,
+            constitution: 9,
+            charisma: 9
         }, 
         race = '', 
         charClass = '', 
         hp = 0, 
         xp = 0,
         name = '',
-        description = ''
+        description = '',
+        gold = 0
     } = {}
 ) => ({
     type: ADD_CHARACTER,
@@ -31,7 +32,8 @@ export const addCharacter = (
         hp,
         xp,
         name,
-        description
+        description,
+        gold
     }
 });
 

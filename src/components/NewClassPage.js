@@ -1,38 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import ClassForm from './ClassForm';
+import { editCharacter } from '../actions/characters';
 
-class NewClassPage extends React.Component {
-    constructor(props){
-        super(props);
-        
-        this.state = {
-           
-        };
-    }
-    
-    render() {
-        console.log(this.props.characters);
-        return (
-            <div>
-                Create Character Step 3
-                <Link to="new-char-step-4">Step 4</Link>
-            </div>
-        );
-    }
-}
+const NewClassPage = (props) => (
+    <div>
+        <ClassForm 
+            onSubmit={(id, character) => {
+                props.dispatch(editCharacter(id, character));
+                props.history.push('/new-char-step-4');
+            }}
+        />
+    </div>
+);
 
-// const NewClassPage = (props) => (
-//     <div>
-//         Create Character Step 3
-//         <Link to="new-char-step-4">Step 4</Link>
-//     </div>
-// );
-
-const mapDispatchToProps = (state) => {
-    return {
-        characters: state.characters
-    };
-};
-
-export default connect(mapDispatchToProps)(NewClassPage);
+export default connect()(NewClassPage);

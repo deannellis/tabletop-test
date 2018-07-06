@@ -76,11 +76,9 @@ class RaceForm extends React.Component {
     }
     
     handleOptionChange = (e) => {
-        const value = `${e.target.value}`;
-        console.log(value);
-        this.setState(() => ({
-            selectedOption: value
-        }));
+        this.setState({
+            selectedOption: e.target.value
+        });
     }
     
     onSubmit = (e) => {
