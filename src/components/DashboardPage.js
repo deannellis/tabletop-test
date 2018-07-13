@@ -5,8 +5,9 @@ import CharacterList from './CharacterList';
 const DashboardPage = () => (
     <div>
         <CharacterList />
-        <Link to="/new-char-step-1">Create New Character</Link>
-        <Link to="/view-char">View Character</Link>
+        <div>
+            <Link to="/new-char-step-1">Create New Character</Link>
+        </div>
     </div>
 );
 

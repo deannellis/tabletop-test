@@ -1,4 +1,5 @@
 import React from 'react';
+import SingleRollDie from './SingleRollDie';
 
 export default class AbilitiesForm extends React.Component {
     constructor(props){
@@ -11,13 +12,14 @@ export default class AbilitiesForm extends React.Component {
             dexterity: undefined,
             constitution: undefined,
             charisma: undefined,
-            error: ''
+            error: '',
+            refreshKey: 0,
+            lastDieRolled: undefined,
+            lastResult: undefined
         };
     }
     
     render(){
-        
-        
         return (
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
@@ -33,24 +35,13 @@ export default class AbilitiesForm extends React.Component {
             </div>
         );
     }
-    renderAttribute = (label, attributeKey) => {
-        const attributeValue = this.state[attributeKey];
-        const isDefined = attributeValue !== undefined;
-        const message = label + ': ' + (isDefined? attributeValue: 'Roll to determine');
-        return(
-            <div>
-                <button type="button" onClick={()=>{this.onRoll(attributeKey)}} disabled={isDefined}>{label}</button>
-                <p>{message}</p>
-            </div>
-        );
-    }
     
-    onRoll = (attributeKey) => {
-        const rollValue = Math.floor(Math.random()*20) + 1;
+    handleRollDie = (result, attributeKey) => {
         this.setState(() => ({
-            [attributeKey]: rollValue,
+            lastResult: result,
+            [attributeKey]: result
         }));
-    }
+    };
     
     onSubmit = (e) => {
         e.preventDefault();
@@ -76,4 +67,24 @@ export default class AbilitiesForm extends React.Component {
             });
         } 
     }
+    
+    renderAttribute = (label, attributeKey) => {
+        const attributeValue = this.state[attributeKey];
+        const isDefined = attributeValue !== undefined;
+        const message = label + ': ' + (isDefined ? attributeValue : 'roll to determine');
+        return(
+            <div>
+                <p>{message}</p>
+                <div className="dice-container">
+                    <SingleRollDie dieType={20} handleRollDie={this.handleRollDie} attributeKey={attributeKey} updateRefreshKey={this.updateRefreshKey} refreshKey={this.state.refreshKey}/>
+                </div>
+            </div>
+        );
+    }
+    
+    updateRefreshKey = (newKey) => {
+        this.setState(() => ({
+            refreshKey: newKey
+        }));
+    };
 }

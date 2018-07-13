@@ -9,8 +9,8 @@ import './styles/styles.scss';
 
 const store = configureStore();
 
-store.dispatch(addCharacter({ race: 'Elf', charClass: 'Fighter', name: 'Dugan' }));
-store.dispatch(addCharacter({ race: 'Human', charClass: 'Magic-User', name: 'Barfunk' }));
+store.dispatch(addCharacter({ race: 'elf', charClass: 'fighter', name: 'Dugan' }));
+store.dispatch(addCharacter({ race: 'human', charClass: 'magic-User', name: 'Barfunk' }));
 
 console.log(store.getState());
 
