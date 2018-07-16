@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import SingleRollDie from './SingleRollDie';
 
 class DetailsForm extends React.Component {
     constructor(props){
@@ -10,37 +11,49 @@ class DetailsForm extends React.Component {
             name: '',
             gold: undefined,
             hp: undefined,
-            error: ''
+            error: '',
+            lastResult: undefined,
+            goldRolls: [],
+            refreshKey: 0,
+            hpMessage: ''
         };
+        this.lastCharacter = this.props.characters[this.props.characters.length - 1];
+        this.lastCharCon = this.lastCharacter.abilities.constitution;
     }
     
     render() {
         const hpDefined = this.state.hp !== undefined;
-        const goldDefined = this.state.gold !== undefined;
+        let goldMessage;
+        
+        switch (this.state.goldRolls.length) {
+            case 1:
+                goldMessage = this.state.goldRolls[0];
+                break;
+            case 2:
+                goldMessage = `${this.state.goldRolls[0]} + ${this.state.goldRolls[1]} = ${this.state.gold}`;
+                break;
+            case 3:
+                goldMessage = `${this.state.goldRolls[0]} + ${this.state.goldRolls[1]} + ${this.state.goldRolls[2]} = ${this.state.gold}`;
+                break;
+            default:
+                goldMessage = 'roll die to determine gold';
+        }
+        
         return (
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
                 <h2>Roll for Hit Points</h2>
-                <div>
-                    <button 
-                        type="button"
-                        onClick={this.onRollHp}
-                        disabled={hpDefined}
-                    >
-                        HP
-                    </button>
-                    <p>HP: {hpDefined ? this.state.hp : 'roll for HP'}</p>
-                </div>
+                {this.renderDie('hp')}
+                <p>HP: {hpDefined ? this.state.hpMessage : 'roll for HP'}</p>
                 <h2>Roll for Gold</h2>
                 <div>
-                    <button 
-                        type="button"
-                        onClick={this.onRollGold}
-                        disabled={goldDefined}
-                    >
-                        Gold
-                    </button>
-                    <p>HP: {goldDefined ? this.state.gold : 'roll for gold'}</p>
+                    {this.renderDie('gold')}
+                    {this.renderDie('gold')}
+                    {this.renderDie('gold')}
+                    
+                    <p>
+                        Gold: {goldMessage}
+                    </p>
                 </div>
                 <form onSubmit={this.onSubmit}>
                     <label>
@@ -77,65 +90,95 @@ class DetailsForm extends React.Component {
         this.setState(() => ({ name }));
     }
     
-    onRollGold = () => {
-        // Roll value needs to bee replaced with 3 d6 dice components
-        // Temporary solution
-        const rollValue = (3 * (Math.floor(Math.random()*6) + 1)) * 10;
-        this.setState(() => ({
-            gold: rollValue
-        }));
+    renderDie = (attribute) => {
+        let dieType;
+        let attributeKey = attribute;
+        
+        if(attribute == 'hp'){
+            switch(this.lastCharacter.charClass) {
+                case 'cleric':
+                    dieType = 6;
+                    break;
+                case 'fighter':
+                    dieType = 8;
+                    break;
+                case 'magic-user':
+                    dieType = 4;
+                    break;
+                case 'thief':
+                    dieType = 4;
+                    break;
+            }
+        } else if(attribute == 'gold') {
+            dieType = 6;
+        }
+        
+        return (
+            <div className="dice-container">
+                <SingleRollDie dieType={dieType} handleRollDie={this.handleRollDie} attributeKey={attributeKey} updateRefreshKey={this.updateRefreshKey} refreshKey={this.state.refreshKey}/>
+            </div>    
+        );
     }
     
-    onRollHp = () => {
-        let rollValue;
-        let conModifier
-        const characters = this.props.characters;
-        const lastCharacter = characters[characters.length - 1];
-        const lastCharCon = lastCharacter.abilities.constitution;
+    sum = (x, y, z) => {
+        return x + y + z;
+    }
+    
+    handleRollDie = (result, attributeKey) => {
+        let conModifier;
+        let hpMessage;
+        let finalHp;
         
-        if(lastCharCon <= 3) {
+        if(this.lastCharCon <= 3) {
             conModifier = -3;
-        } else if(lastCharCon > 3 && lastCharCon <= 5) {
+        } else if(this.lastCharCon > 3 && this.lastCharCon <= 5) {
             conModifier = -2;
-        } else if(lastCharCon > 5 && lastCharCon <= 8) {
+        } else if(this.lastCharCon > 5 && this.lastCharCon <= 8) {
             conModifier = -1;
-        } else if(lastCharCon > 8 && lastCharCon <= 12) {
+        } else if(this.lastCharCon > 8 && this.lastCharCon <= 12) {
             conModifier = 0;
-        } else if(lastCharCon > 12 && lastCharCon <= 15) {
+        } else if(this.lastCharCon > 12 && this.lastCharCon <= 15) {
             conModifier = 1;
-        } else if(lastCharCon > 15 && lastCharCon <= 17) {
+        } else if(this.lastCharCon > 15 && this.lastCharCon <= 17) {
             conModifier = 2;
         } else {
             conModifier = 3;
         }
         
-        switch(lastCharacter.charClass) {
-            case 'cleric':
-                rollValue = (Math.floor(Math.random()*6) + 1) + conModifier;
-                if(rollValue < 1) {rollValue = 1}
-                console.log('cleric, roll: ' + rollValue);
-                break;
-            case 'fighter':
-                rollValue = (Math.floor(Math.random()*8) + 1) + conModifier;
-                if(rollValue < 1) {rollValue = 1}
-                console.log('fighter, roll: ' + rollValue);
-                break;
-            case 'magic-user':
-                rollValue = (Math.floor(Math.random()*4) + 1) + conModifier;
-                if(rollValue < 1) {rollValue = 1}
-                console.log('magic-user, roll: ' + rollValue);
-                break;
-            case 'thief':
-                rollValue = (Math.floor(Math.random()*4) + 1) + conModifier;
-                if(rollValue < 1) {rollValue = 1}
-                console.log('thief, roll: ' + rollValue);
-                break;
+        if((result + conModifier) > 0){
+            finalHp = result + conModifier;
+        } else {
+            finalHp = 1;
         }
         
-        this.setState(() => ({
-            hp: rollValue,
-        }));
-    }
+        hpMessage = `${result} + ${conModifier}(Constitution modifier) = ${finalHp}`
+        
+        if(attributeKey == 'hp') {
+            this.setState(() => ({
+                lastResult: result,
+                [attributeKey]: finalHp,
+                hpMessage
+            }));
+        } else if(attributeKey == 'gold') {
+            
+            this.setState(() => (
+                {
+                    goldRolls: [...this.state.goldRolls, (result * 10)],
+                }
+            ));
+        }
+        
+        const rolls = this.state.goldRolls;
+        console.log(rolls);
+        let goldTotal = rolls.reduce((a, b) => a + b, 0);
+        
+        this.setState(() => (
+            {
+                gold: goldTotal
+            }
+        ));
+        
+    };
     
     onSubmit = (e) => {
         e.preventDefault();
@@ -153,6 +196,12 @@ class DetailsForm extends React.Component {
             });
         }
     }
+    
+    updateRefreshKey = (newKey) => {
+        this.setState(() => ({
+            refreshKey: newKey
+        }));
+    };
 }
 
 const mapStateToProps = (state) => {
