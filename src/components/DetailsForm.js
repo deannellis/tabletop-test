@@ -30,7 +30,7 @@ class DetailsForm extends React.Component {
                 goldMessage = this.state.goldRolls[0];
                 break;
             case 2:
-                goldMessage = `${this.state.goldRolls[0]} + ${this.state.goldRolls[1]} = ${this.state.gold}`;
+                goldMessage = `${this.state.goldRolls[0]} + ${this.state.goldRolls[1]}`;
                 break;
             case 3:
                 goldMessage = `${this.state.goldRolls[0]} + ${this.state.goldRolls[1]} + ${this.state.goldRolls[2]} = ${this.state.gold}`;
@@ -172,11 +172,13 @@ class DetailsForm extends React.Component {
         console.log(rolls);
         let goldTotal = rolls.reduce((a, b) => a + b, 0);
         
-        this.setState(() => (
-            {
-                gold: goldTotal
-            }
-        ));
+        if(this.state.goldRolls.length == 3) {
+            this.setState(() => (
+                {
+                    gold: goldTotal
+                }
+            ));
+        }
         
     };
     
