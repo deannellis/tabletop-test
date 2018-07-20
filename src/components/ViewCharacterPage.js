@@ -18,6 +18,12 @@ const ViewCharacterPage = (props) => {
             <p>{`HP: ${props.character.hp}`}</p>
             <p>{`XP: ${props.character.xp}`}</p>
             <p>{`Gold: ${props.character.gold}`}</p>
+            <h3>Equipmunk:</h3>
+            <div>
+                {props.character.equipment.map(weapon => (
+                  <div className="station" key={weapon}>{weapon}</div>
+                ))}
+            </div>
             <Link to="/">Back</Link>
         </div>    
     );

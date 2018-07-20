@@ -6,15 +6,16 @@ export default class EquipForm extends React.Component {
         super(props);
         this.state = {
         }
+        this.goldPrice = this.props.price / 100;
     }
     
     render() {
-        let canPurchase = (this.props.currentGold >= this.props.price);
+        let canPurchase = (this.props.currentGold >= this.goldPrice);
         return (
             <div>   
                 <h2>{this.name}</h2>
                 <p>damage: {this.props.damage}</p>
-                <p>price: {this.props.price}</p>
+                <p>price: {this.goldPrice}gp</p>
                 <p>weight: {this.props.weight}</p>
                 <p>{this.props.range.length && 'ranged'}</p>
                 <Checkbox
@@ -28,6 +29,6 @@ export default class EquipForm extends React.Component {
     }
     
     toggleCheckbox = isChecked => {
-        this.props.handleToggleCheckbox(isChecked, this.props.name, this.props.price)
+        this.props.handleToggleCheckbox(isChecked, this.props.id, this.goldPrice)
     }
 }

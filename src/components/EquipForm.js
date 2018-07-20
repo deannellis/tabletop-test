@@ -1,25 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import weapons from '../objects/weapons';
 import WeaponListItem from './WeaponListItem';
 
-export default class EquipForm extends React.Component {
+class EquipForm extends React.Component {
     constructor(props){
         super(props);
         
+        const characters = this.props.characters;
+        const lastCharacter = characters[characters.length - 1];
+        this.currentCharacter = lastCharacter;
         this.state = {
-            names: [],
-            gold: 3000
+            ids: [],
+            gold: lastCharacter.gold
         }
     }
     
     render() {
+        
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
                     Equip form
                     <h3>{this.state.gold}</h3>
                     {weapons.map((weapon) => {
-                        // return <WeaponListItem key={weapon.id} {...weapon} handleToggleCheckbox={this.toggleCheckbox}/>
                         return <WeaponListItem key={weapon.id} {...weapon} handleToggleCheckbox={this.toggleCheckbox} currentGold={this.state.gold} />
                     })}
                     <button>Finish</button>
@@ -31,18 +35,29 @@ export default class EquipForm extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state.names);
+        this.props.onSubmit( this.currentCharacter.id, {
+            equipment: this.state.ids
+        });
     }
     
-    toggleCheckbox = (isChecked, name, price) => {
+    toggleCheckbox = (isChecked, id, price) => {
         if(isChecked) {
             this.setState({ gold: this.state.gold - price});
-            this.setState({ names: [ ...this.state.names, name ]});
+            this.setState({ ids: [ ...this.state.ids, id ]});
         } else {
             this.setState({ gold: this.state.gold + price});
-            const array = [...this.state.names]; // make a separate copy of the array
-            const index = array.indexOf(name);
+            const array = [...this.state.ids]; // make a separate copy of the array
+            const index = array.indexOf(id);
             array.splice(index, 1);
-            this.setState({names: array});
+            this.setState({ids: array});
         }
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        characters: state.characters
+    };
+};
+
+export default connect(mapStateToProps)(EquipForm);

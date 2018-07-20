@@ -20,7 +20,8 @@ export const addCharacter = (
         xp = 0,
         name = '',
         description = '',
-        gold = 0
+        gold = 0,
+        equipment = []
     } = {}
 ) => ({
     type: ADD_CHARACTER,
@@ -33,7 +34,8 @@ export const addCharacter = (
         xp,
         name,
         description,
-        gold
+        gold,
+        equipment
     }
 });
 
