@@ -13,7 +13,7 @@ export default class EquipForm extends React.Component {
         let canPurchase = (this.props.currentGold >= this.goldPrice);
         return (
             <div>   
-                <h2>{this.name}</h2>
+                <h2>{this.props.name}</h2>
                 <p>damage: {this.props.damage}</p>
                 <p>price: {this.goldPrice}gp</p>
                 <p>weight: {this.props.weight}</p>

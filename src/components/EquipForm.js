@@ -24,7 +24,12 @@ class EquipForm extends React.Component {
                     Equip form
                     <h3>{this.state.gold}</h3>
                     {weapons.map((weapon) => {
-                        return <WeaponListItem key={weapon.id} {...weapon} handleToggleCheckbox={this.toggleCheckbox} currentGold={this.state.gold} />
+                        return <WeaponListItem 
+                                    key={weapon.id} 
+                                    {...weapon}
+                                    handleToggleCheckbox={this.toggleCheckbox}
+                                    currentGold={this.state.gold}
+                                />
                     })}
                     <button>Finish</button>
                 </form>
