@@ -53,7 +53,10 @@ const ViewCharacterPage = (props) => {
     } else {
         return (
             <div>
-                character not found
+                Character not found
+                <div>
+                    <Link to="/">Home</Link>
+                </div>
             </div>
         );
     }

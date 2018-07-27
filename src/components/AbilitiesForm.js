@@ -6,12 +6,12 @@ export default class AbilitiesForm extends React.Component {
         super(props);
         
         this.state = {
-            strength: undefined,
-            intelligence: undefined,
-            wisdom: undefined,
-            dexterity: undefined,
-            constitution: undefined,
-            charisma: undefined,
+            strength: [],
+            intelligence: [],
+            wisdom: [],
+            dexterity: [],
+            constitution: [],
+            charisma: [],
             error: '',
             refreshKey: 0,
             lastDieRolled: undefined,
@@ -37,10 +37,104 @@ export default class AbilitiesForm extends React.Component {
     }
     
     handleRollDie = (result, attributeKey) => {
-        this.setState(() => ({
-            lastResult: result,
-            [attributeKey]: result
-        }));
+        switch (attributeKey) {
+            case 'strength':
+                if(this.state.strength.length !== 2) {
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: [...this.state.strength + result]
+                    }));
+                } else {
+                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+                    const total = this.state.strength.reduce(reducer);
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: (total + result)
+                    }));
+                }
+                break;
+            case 'intelligence':
+                if(this.state.intelligence.length !== 2) {
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: [...this.state.intelligence + result]
+                    }));
+                } else {
+                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+                    const total = this.state.intelligence.reduce(reducer);
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: (total + result)
+                    }));
+                }
+                break;
+            case 'wisdom':
+                if(this.state.wisdom.length !== 2) {
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: [...this.state.wisdom + result]
+                    }));
+                } else {
+                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+                    const total = this.state.wisdom.reduce(reducer);
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: (total + result)
+                    }));
+                }
+                break;
+            case 'dexterity':
+                if(this.state.dexterity.length !== 2) {
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: [...this.state.dexterity + result]
+                    }));
+                } else {
+                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+                    const total = this.state.dexterity.reduce(reducer);
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: (total + result)
+                    }));
+                }
+                break;
+            case 'constitution':
+                if(this.state.constitution.length !== 2) {
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: [...this.state.constitution + result]
+                    }));
+                } else {
+                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+                    const total = this.state.constitution.reduce(reducer);
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: (total + result)
+                    }));
+                }
+                break;
+            case 'charisma':
+                if(this.state.charisma.length !== 2) {
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: [...this.state.charisma + result]
+                    }));
+                } else {
+                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+                    const total = this.state.charisma.reduce(reducer);
+                    this.setState(() => ({
+                        lastResult: result,
+                        [attributeKey]: (total + result)
+                    }));
+                }
+                break;
+            default:
+                console.log('some other shit');
+        }
+        // this.setState(() => ({
+        //     lastResult: result,
+        //     [attributeKey]: result
+        // }));
     };
     
     onSubmit = (e) => {
@@ -76,7 +170,9 @@ export default class AbilitiesForm extends React.Component {
             <div>
                 <p>{message}</p>
                 <div className="dice-container">
-                    <SingleRollDie dieType={20} handleRollDie={this.handleRollDie} attributeKey={attributeKey} updateRefreshKey={this.updateRefreshKey} refreshKey={this.state.refreshKey}/>
+                    <SingleRollDie dieType={6} handleRollDie={this.handleRollDie} attributeKey={attributeKey} updateRefreshKey={this.updateRefreshKey} refreshKey={this.state.refreshKey}/>
+                    <SingleRollDie dieType={6} handleRollDie={this.handleRollDie} attributeKey={attributeKey} updateRefreshKey={this.updateRefreshKey} refreshKey={this.state.refreshKey}/>
+                    <SingleRollDie dieType={6} handleRollDie={this.handleRollDie} attributeKey={attributeKey} updateRefreshKey={this.updateRefreshKey} refreshKey={this.state.refreshKey}/>
                 </div>
             </div>
         );
