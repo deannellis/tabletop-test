@@ -13,6 +13,7 @@ export default class SingleRollDie extends React.Component {
      this.time = undefined;
      this.isRolling = false;
      this.orientVariations = 3;
+     this.numClicks = 0;
      this.repeat = this.repeat.bind(this);
      this.handleMouseDown = this.handleMouseDown.bind(this);
      this.handleMouseUp = this.handleMouseUp.bind(this);
@@ -57,7 +58,7 @@ export default class SingleRollDie extends React.Component {
         this.setState(() => ({
             dieValue: newValue
         }));
-        
+        console.log(this.numClicks);
         this.props.handleRollDie(newValue, this.props.attributeKey);
         this.time = undefined;
         this.isRolling = false;
@@ -75,23 +76,28 @@ export default class SingleRollDie extends React.Component {
     };
     
     handleMouseDown () {
-        if(!this.state.hasRolled) {
-            this.repeat();
-            this.isRolling = true;   
+        if(this.isRolling === false) {
+            if(!this.state.hasRolled) {
+                this.repeat();
+                this.isRolling = true;
+            }
         }
     };
     
     handleMouseUp () {
         if(!this.state.hasRolled) {
-            this.isRolling = false;
-            setTimeout(() => {this.resolveRoll()}, 500);
+            //this.isRolling = false;
+            if(this.numClicks < 1) {
+                setTimeout(() => {this.resolveRoll()}, 500);
+                this.numClicks++;
+            }
         }
     };
     
     handleMouseOut () {
         if(!this.state.hasRolled) {
             if(this.isRolling === true) {
-                setTimeout(() => {this.resolveRoll()}, 500);
+                this.resolveRoll();
             }
         }
     };
