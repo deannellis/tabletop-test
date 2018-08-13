@@ -58,7 +58,7 @@ export default class SingleRollDie extends React.Component {
         this.setState(() => ({
             dieValue: newValue
         }));
-        console.log(this.numClicks);
+        
         this.props.handleRollDie(newValue, this.props.attributeKey);
         this.time = undefined;
         this.isRolling = false;
@@ -86,7 +86,6 @@ export default class SingleRollDie extends React.Component {
     
     handleMouseUp () {
         if(!this.state.hasRolled) {
-            //this.isRolling = false;
             if(this.numClicks < 1) {
                 setTimeout(() => {this.resolveRoll()}, 500);
                 this.numClicks++;
@@ -97,7 +96,10 @@ export default class SingleRollDie extends React.Component {
     handleMouseOut () {
         if(!this.state.hasRolled) {
             if(this.isRolling === true) {
-                this.resolveRoll();
+                if(this.numClicks < 1) {
+                    setTimeout(() => {this.resolveRoll()}, 500);
+                    this.numClicks++;
+                }
             }
         }
     };
