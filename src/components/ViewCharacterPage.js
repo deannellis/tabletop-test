@@ -38,12 +38,27 @@ const ViewCharacterPage = (props) => {
                 <p>{`HP: ${props.character.hp}`}</p>
                 <p>{`XP: ${props.character.xp}`}</p>
                 <p>{`Gold: ${props.character.gold}`}</p>
+                {props.character.hasOwnProperty("spells") && 
+                    <div>
+                        <h3>Spells:</h3>
+                        <div>
+                            {props.character.equipment.map((id) => {
+                                return <IdListItem 
+                                            key={id} 
+                                            id={id}
+                                            obj={'spells'}
+                                        />
+                            })}
+                        </div>
+                    </div>
+                }
                 <h3>Equipmunk:</h3>
                 <div>
                     {props.character.equipment.map((id) => {
                         return <IdListItem 
                                     key={id} 
                                     id={id}
+                                    obj={'weapons'}
                                 />
                     })}
                 </div>

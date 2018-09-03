@@ -27,7 +27,7 @@ class EquipForm extends React.Component {
                         return <WeaponListItem 
                                     key={weapon.id} 
                                     {...weapon}
-                                    handleToggleCheckbox={this.toggleCheckbox}
+                                    handleToggleCheckbox={this.handleToggleCheckbox}
                                     currentGold={this.state.gold}
                                 />
                     })}
@@ -45,7 +45,7 @@ class EquipForm extends React.Component {
         });
     }
     
-    toggleCheckbox = (isChecked, id, price) => {
+    handleToggleCheckbox = (isChecked, id, price) => {
         if(isChecked) {
             this.setState({ gold: this.state.gold - price});
             this.setState({ ids: [ ...this.state.ids, id ]});

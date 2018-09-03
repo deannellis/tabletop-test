@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import spells from '../objects/spells';
+import SpellListItem from './SpellListItem';
 
 class ClassForm extends React.Component {
     constructor(props){

@@ -8,7 +8,11 @@ const NewClassPage = (props) => (
         <ClassForm 
             onSubmit={(id, character) => {
                 props.dispatch(editCharacter(id, character));
-                props.history.push('/new-char-step-4');
+                if(character.charClass == 'magic-user') {
+                    props.history.push('/new-char-step-4.5');
+                } else {
+                    props.history.push('/new-char-step-4');
+                }
             }}
         />
     </div>

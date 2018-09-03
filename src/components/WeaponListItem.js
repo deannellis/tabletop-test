@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from './Checkbox';
 
-export default class EquipForm extends React.Component {
+export default class WeaponListItem extends React.Component {
     constructor(props){
         super(props);
         this.state = {
