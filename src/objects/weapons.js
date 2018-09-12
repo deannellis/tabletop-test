@@ -1,41 +1,5 @@
-// export default {
-//     0000: {
-//         damage: 6,
-//         name: 'Hand Axe',
-//         price: 400, //copper pieces
-//         range: 1,
-//         size: 1, // 1 = Small, 2 = Medium, 3 = Large
-//         weight: 5 //pounds
-//     },
-//     0001: {
-//         damage: 8,
-//         name: 'Battle Axe',
-//         price: 700, 
-//         range: 1,
-//         size: 2,
-//         weight: 7
-//     },
-//     0002: {
-//         damage: 10,
-//         name: 'Great Axe',
-//         price: 1400, 
-//         range: 1,
-//         size: 3,
-//         weight: 10
-//     },
-//     0003: {
-//         damage: 10,
-//         name: 'Shortbow',
-//         price: 2500, 
-//         range: [70, 140, 210],
-//         size: 2,
-//         weight: 2
-//     }
-// }
-    
-export default [
+const weaponsList = [
     {
-        id: '0000',
         damage: 6,
         name: 'Hand Axe',
         price: 400, //copper pieces
@@ -44,7 +8,6 @@ export default [
         weight: 5 //pounds
     },
     {
-        id: '0001',
         damage: 8,
         name: 'Battle Axe',
         price: 700, 
@@ -53,7 +16,6 @@ export default [
         weight: 7
     },
     {
-        id: '0002',
         damage: 10,
         name: 'Great Axe',
         price: 1400, 
@@ -62,7 +24,6 @@ export default [
         weight: 10
     },
     {
-        id: '0003',
         damage: 10,
         name: 'Shortbow',
         price: 2500, 
@@ -71,6 +32,14 @@ export default [
         weight: 2
     }
 ]
+
+const weaponsArray = weaponsList.reduce((weapons, currentWeapon, index) => {
+    currentWeapon.id = index;
+    weapons[index] = currentWeapon;
+    return weapons;
+}, []);
+
+export default weaponsArray;
 
 // const sampleWeapon = {
 //     id: 0000,

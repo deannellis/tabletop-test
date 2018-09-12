@@ -26,6 +26,7 @@ class SpellForm extends React.Component {
                                     key={spell.id} 
                                     {...spell}
                                     spellType={'magic-user'}
+                                    selected={this.state.selectedOption}
                                     handleSelectRadio={this.handleSelectRadio}
                                 />
                     })}
@@ -36,6 +37,7 @@ class SpellForm extends React.Component {
     }
     
     handleSelectRadio = (selection) => {
+        console.log(selection);
         this.setState(() => ({
             selectedOption: selection
         }));
