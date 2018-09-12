@@ -10,28 +10,35 @@ export default (props) => {
     //     objType = 
     // }
     
-    const item = weapons.filter((weapon) => {
-        return weapon.id === props.id
-    });
+    // const item = weapons.filter((weapon) => {
+    //     return weapon.id === props.id
+    // });
     
-    const spell = spells.filter((spell) => {
-        return spell.id === props.id
-    });
+    // const spell = spells.filter((spell) => {
+    //     return spell.id === props.id
+    // });
+    
+    const item = weapons[props.id];
+    console.log(props.id);
+    
+    const {name, damage, price, weight, range} = item;
+    
+    const spell = spells[props.id];
     
     return (
         <div>
         {objType == 'weapons' && 
             <div>
-                <h2>{item[0].name}</h2>
-                <p>damage: {item[0].damage}</p>
-                <p>price: {item[0].price/100}gp</p>
-                <p>weight: {item[0].weight}</p>
-                <p>{item[0].range.length && 'ranged'}</p>
+                <h2>{name}</h2>
+                <p>damage: {damage}</p>
+                <p>price: {price/100}gp</p>
+                <p>weight: {weight}</p>
+                <p>{range.length && 'ranged'}</p>
             </div>
         }
         {objType == 'spells' && 
             <div>
-                <p>{spell[0].name}</p>
+                <p>{spell.name}</p>
             </div>
         }
         </div>

@@ -9,6 +9,7 @@ export default class SpellListItem extends React.Component {
     }
     
     render() {
+        // console.log("this.props.id:"+this.props.id);
         switch(this.props.spellType) {
             case 'magic-user':
                 if(this.props.type == 'magic-user' || this.props.type == undefined){
@@ -16,7 +17,7 @@ export default class SpellListItem extends React.Component {
                         <div>
                             <label>
                                 <input type="radio" name="class" value={this.props.id}
-                                    checked={this.state.selected === this.props.id}
+                                    checked={this.props.selected == this.props.id}
                                     onChange={this.handleOptionChange}
                                 />
                                 {this.props.name}
@@ -34,7 +35,7 @@ export default class SpellListItem extends React.Component {
                         <div>
                             <label>
                                 <input type="radio" name="class" value={this.props.id}
-                                    checked={this.state.selected === this.props.id}
+                                    checked={this.props.selected == this.props.id}
                                     onChange={this.handleOptionChange}
                                 />
                                 {this.props.name}
@@ -51,7 +52,7 @@ export default class SpellListItem extends React.Component {
                     <div>
                         <label>
                             <input type="radio" name="class" value={this.props.id}
-                                    checked={this.state.selected === this.props.id}
+                                    checked={this.props.selected == this.props.id}
                                     onChange={this.handleOptionChange}
                                 />
                             {this.props.name}
@@ -63,9 +64,10 @@ export default class SpellListItem extends React.Component {
     }
     
     handleOptionChange = (e) => {
-        this.setState({
-            selected: e.target.value
-        });
+        // console.log("this.state.selected:"+this.state.selected);
+        // this.setState({
+        //     selected: e.target.value
+        // });
         // /\ This isn't doing anything. Make stateless
         this.props.handleSelectRadio(e.target.value);
     }

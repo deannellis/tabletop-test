@@ -42,7 +42,7 @@ const ViewCharacterPage = (props) => {
                     <div>
                         <h3>Spells:</h3>
                         <div>
-                            {props.character.equipment.map((id) => {
+                            {props.character.spells.map((id) => {
                                 return <IdListItem 
                                             key={id} 
                                             id={id}
