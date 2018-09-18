@@ -1,6 +1,7 @@
 import React from 'react';
 import SingleRollDie from './SingleRollDie';
 import uuid from 'uuid';
+import NotFoundPage from './NotFoundPage';
 
 export default class AbilitiesForm extends React.Component {
     constructor(props){
@@ -21,20 +22,26 @@ export default class AbilitiesForm extends React.Component {
     }
     
     render() {
-        return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit} >
-                    {this.renderAttribute('Strength', 'strength')}
-                    {this.renderAttribute('Intelligence', 'intelligence')}
-                    {this.renderAttribute('Wisdom', 'wisdom')}
-                    {this.renderAttribute('Dexterity', 'dexterity')}
-                    {this.renderAttribute('Constitution', 'constitution')}
-                    {this.renderAttribute('Charisma', 'charisma')}
-                    <button>Next Step</button>
-                </form>
-            </div>
-        );
+        if (this.props.currentCharacter !== undefined) {
+            return (
+                <div>
+                    {this.state.error && <p>{this.state.error}</p>}
+                    <form onSubmit={this.onSubmit} >
+                        {this.renderAttribute('Strength', 'strength')}
+                        {this.renderAttribute('Intelligence', 'intelligence')}
+                        {this.renderAttribute('Wisdom', 'wisdom')}
+                        {this.renderAttribute('Dexterity', 'dexterity')}
+                        {this.renderAttribute('Constitution', 'constitution')}
+                        {this.renderAttribute('Charisma', 'charisma')}
+                        <button>Next Step</button>
+                    </form>
+                </div>
+            );
+        } else{
+            return (
+                <NotFoundPage />    
+            );
+        }
     }
     
     handleRollDie = (result, attributeKey) => {

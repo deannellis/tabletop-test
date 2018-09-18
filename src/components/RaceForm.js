@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NotFoundPage from './NotFoundPage';
 
 class RaceForm extends React.Component {
     constructor(props){
@@ -76,13 +77,8 @@ class RaceForm extends React.Component {
             )
         } else {
             return (
-                <div>
-                    Character not found
-                    <div>
-                        <Link to="/">Home</Link>
-                    </div>
-                </div>
-            )
+                <NotFoundPage />
+            );
         }
     }
     

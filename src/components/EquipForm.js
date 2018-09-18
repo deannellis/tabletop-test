@@ -1,36 +1,51 @@
 import React from 'react';
 import weapons from '../objects/weapons';
 import WeaponListItem from './WeaponListItem';
+import NotFoundPage from './NotFoundPage';
 
 class EquipForm extends React.Component {
     constructor(props){
         super(props);
         
+        let goldAmount;
+        if(this.props.currentCharacter) {
+            goldAmount = this.props.currentCharacter.gold;
+        } else {
+            goldAmount = 0;
+        }
+        
         this.state = {
             ids: [],
-            gold: this.props.currentCharacter.gold
+            gold: goldAmount
         }
     }
     
     render() {
         
-        return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    Equip form
-                    <h3>{this.state.gold}</h3>
-                    {weapons.map((weapon) => {
-                        return <WeaponListItem 
-                                    key={weapon.id} 
-                                    {...weapon}
-                                    handleToggleCheckbox={this.handleToggleCheckbox}
-                                    currentGold={this.state.gold}
-                                />
-                    })}
-                    <button>Finish</button>
-                </form>
-            </div>    
-        );
+        if (this.props.currentCharacter !== undefined) {
+            return (
+                <div>
+                    <form onSubmit={this.onSubmit}>
+                        Equip form
+                        <h3>{this.state.gold}</h3>
+                        {weapons.map((weapon) => {
+                            return <WeaponListItem 
+                                        key={weapon.id} 
+                                        {...weapon}
+                                        handleToggleCheckbox={this.handleToggleCheckbox}
+                                        currentGold={this.state.gold}
+                                    />
+                        })}
+                        <button>Finish</button>
+                    </form>
+                </div>    
+            );
+        } else {
+            return (
+                <NotFoundPage />    
+            );
+        }
+
     }
     
     onSubmit = (e) => {

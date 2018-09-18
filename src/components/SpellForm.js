@@ -1,7 +1,9 @@
 import React from 'react';
 import spells from '../objects/spells';
 import SpellListItem from './SpellListItem';
+import NotFoundPage from './NotFoundPage';
 import { Link } from 'react-router-dom';
+
 
 class SpellForm extends React.Component {
     constructor(props){
@@ -34,13 +36,8 @@ class SpellForm extends React.Component {
             )
         } else{
             return (
-                <div>
-                    Character not found
-                    <div>
-                        <Link to="/">Home</Link>
-                    </div>
-                </div>    
-            )
+                <NotFoundPage />    
+            );
         }
     }
     
