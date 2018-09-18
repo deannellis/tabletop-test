@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import weapons from '../objects/weapons';
 import WeaponListItem from './WeaponListItem';
 
@@ -55,4 +54,4 @@ class EquipForm extends React.Component {
     }
 }
 
-export default connect()(EquipForm);
+export default EquipForm;

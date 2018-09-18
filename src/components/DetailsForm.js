@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import SingleRollDie from './SingleRollDie';
 import { Link } from 'react-router-dom';
 
@@ -130,10 +129,6 @@ class DetailsForm extends React.Component {
         );
     }
     
-    // sum = (x, y, z) => {
-    //     return x + y + z;
-    // }
-    
     handleRollDie = (result, attributeKey) => {
         let conModifier;
         let hpMessage;
@@ -216,4 +211,4 @@ class DetailsForm extends React.Component {
     };
 }
 
-export default connect()(DetailsForm);
+export default DetailsForm;

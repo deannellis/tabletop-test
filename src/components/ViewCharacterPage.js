@@ -5,23 +5,6 @@ import IdListItem from './IdListItem';
 import weapons from '../objects/weapons';
 
 const ViewCharacterPage = (props) => {
-    // const charEquipment = props.character.equipment;
-    // const charWeapons = weapons.filter( (weapon) => {
-    //     for(let i = 0; i < charEquipment.length + 1; i++) {
-    //         console.log(i);
-    //         console.log(charEquipment[i]);
-    //         console.log(weapon.id);
-    //         return charEquipment[i] === weapon.id;
-    //     }
-    // });
-    // var charWeapons = weapons.filter(function(element) {
-    //   var wpns = element.id.split(' ');
-       
-    //     return wpns.filter(function(wpn) {
-    //       return charEquipment.indexOf(wpn) > -1;
-    //     }).length === charEquipment.length;
-    // });
-    // console.log('weapons:' + charWeapons[0]);
     if(props.character !== undefined) {
         return (
             <div>

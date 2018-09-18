@@ -1,6 +1,5 @@
 import React from 'react';
 import DieIcon from './DieIcon';
-// import ReactTouchEvents from "react-touch-events";
 export default class SingleRollDie extends React.Component {
     
     constructor(props) {

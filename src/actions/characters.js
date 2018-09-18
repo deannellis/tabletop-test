@@ -43,7 +43,6 @@ export const addCharacter = (
 });
 
 // REMOVE_CHARACTER
-
 export const removeCharacter = ({ id } = {}) => ({
     type: REMOVE_CHARACTER,
     id

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import spells from '../objects/spells';
 import SpellListItem from './SpellListItem';
 import { Link } from 'react-router-dom';
@@ -46,7 +45,6 @@ class SpellForm extends React.Component {
     }
     
     handleSelectRadio = (selection) => {
-        console.log(selection);
         this.setState(() => ({
             selectedOption: selection
         }));
@@ -70,4 +68,4 @@ class SpellForm extends React.Component {
     };
 }
 
-export default connect()(SpellForm);
+export default SpellForm;

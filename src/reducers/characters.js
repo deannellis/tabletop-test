@@ -29,7 +29,6 @@ export default ( state = charactersReducerDefaultState, action ) => {
             return state.map((character) => {
                 if (character.id ===  action.id) {
                     let {inProgressStep, ...rest} = character;
-                    console.log('rest'+rest);
                     return rest;
                 } else {
                     return character;
