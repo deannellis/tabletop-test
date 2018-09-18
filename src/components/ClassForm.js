@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import spells from '../objects/spells';
 import SpellListItem from './SpellListItem';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,7 @@ class ClassForm extends React.Component {
                 canMagicUser = false;
             } else if (currentCharacter.race == 'halfling') {
                 canFighter = false;
-            } 
+            }
             
             if(currentCharacter.abilities.wisdom < 9) {
                 canCleric = false;
@@ -146,4 +145,4 @@ class ClassForm extends React.Component {
     }
 }
 
-export default connect()(ClassForm);
+export default ClassForm;

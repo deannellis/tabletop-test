@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class RaceForm extends React.Component {
@@ -111,10 +110,4 @@ class RaceForm extends React.Component {
     }
 }
 
-// const mapStateToProps = (state, props) => {
-//     return {
-//         character: state.characters.find((character) => character.id === props.match.params.id)
-//     };
-// };
-
-export default connect()(RaceForm);
+export default RaceForm;

@@ -67,8 +67,7 @@ export default class AbilitiesForm extends React.Component {
                     constitution: this.state.constitution.reduce(sum),
                     charisma: this.state.charisma.reduce(sum)
                 },
-                name: 'In-Progress Character',
-                charClass: 'unkown'
+                name: 'In-Progress Character'
             });
         } 
     }

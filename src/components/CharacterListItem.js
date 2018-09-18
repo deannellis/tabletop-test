@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CharacterListItem = ({ name, charClass, race, id, inProgressStep }) => (
     <div>
         <h2>{name}</h2>
-        <p>{race} - {charClass}</p>
+        {race && <p>{race} {charClass && ` - ${charClass}`}</p>}
         {inProgressStep ? 
             <Link to={`/new-char-step-${inProgressStep}/${id}`}>Finish Character</Link>
         : 
