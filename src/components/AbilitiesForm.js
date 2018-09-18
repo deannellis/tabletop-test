@@ -1,5 +1,6 @@
 import React from 'react';
 import SingleRollDie from './SingleRollDie';
+import uuid from 'uuid';
 
 export default class AbilitiesForm extends React.Component {
     constructor(props){
@@ -57,6 +58,7 @@ export default class AbilitiesForm extends React.Component {
                 error: ''
             }));
             this.props.onSubmit({
+                id: uuid(),
                 abilities: {
                     strength: this.state.strength.reduce(sum),
                     intelligence: this.state.intelligence.reduce(sum),
@@ -65,8 +67,8 @@ export default class AbilitiesForm extends React.Component {
                     constitution: this.state.constitution.reduce(sum),
                     charisma: this.state.charisma.reduce(sum)
                 },
-                name: 'Test',
-                charClass: 'test'
+                name: 'In-Progress Character',
+                charClass: 'unkown'
             });
         } 
     }

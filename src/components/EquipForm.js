@@ -7,12 +7,9 @@ class EquipForm extends React.Component {
     constructor(props){
         super(props);
         
-        const characters = this.props.characters;
-        const lastCharacter = characters[characters.length - 1];
-        this.currentCharacter = lastCharacter;
         this.state = {
             ids: [],
-            gold: lastCharacter.gold
+            gold: this.props.currentCharacter.gold
         }
     }
     
@@ -39,8 +36,7 @@ class EquipForm extends React.Component {
     
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.names);
-        this.props.onSubmit( this.currentCharacter.id, {
+        this.props.onSubmit( this.props.currentCharacter.id, {
             equipment: this.state.ids
         });
     }
@@ -59,10 +55,4 @@ class EquipForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        characters: state.characters
-    };
-};
-
-export default connect(mapStateToProps)(EquipForm);
+export default connect()(EquipForm);

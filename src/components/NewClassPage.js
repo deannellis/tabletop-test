@@ -6,16 +6,19 @@ import { editCharacter } from '../actions/characters';
 const NewClassPage = (props) => (
     <div>
         <ClassForm 
+            currentCharacter={props.currentCharacter}
             onSubmit={(id, character) => {
                 props.dispatch(editCharacter(id, character));
-                if(character.charClass == 'magic-user') {
-                    props.history.push('/new-char-step-4.5');
-                } else {
-                    props.history.push('/new-char-step-4');
-                }
+                props.history.push(`/new-char-step-${character.inProgressStep}/${id}`)
             }}
         />
     </div>
 );
 
-export default connect()(NewClassPage);
+const mapStateToProps = (state, props) => {
+    return {
+        currentCharacter: state.characters.find((character) => character.id === props.match.params.id)
+    };
+};
+
+export default connect(mapStateToProps)(NewClassPage);

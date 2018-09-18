@@ -1,11 +1,12 @@
-import uuid from 'uuid';
+// CHARACTERS ACTIONS
 
 // ADD_CHARACTER
 import actionIds from 'actions/actionIds';
-const {ADD_CHARACTER, REMOVE_CHARACTER, EDIT_CHARACTER} = actionIds;
+const {ADD_CHARACTER, REMOVE_CHARACTER, EDIT_CHARACTER, COMPLETE_CHARACTER} = actionIds;
 
 export const addCharacter = (
     {
+        id = '',
         abilities = {
             strength: 9,
             intelligence: 9,
@@ -21,12 +22,13 @@ export const addCharacter = (
         name = '',
         description = '',
         gold = 0,
-        equipment = []
+        equipment = [],
+        inProgressStep = 2
     } = {}
 ) => ({
     type: ADD_CHARACTER,
     character: {
-        id: uuid(),
+        id,
         abilities,
         race,
         charClass,
@@ -35,7 +37,8 @@ export const addCharacter = (
         name,
         description,
         gold,
-        equipment
+        equipment,
+        inProgressStep
     }
 });
 
@@ -53,3 +56,8 @@ export const editCharacter = (id, updates) => ({
     updates
 });
 
+// COMPLETE_CHARACTER
+export const completeCharacter = ({ id } = {}) => ({
+    type: COMPLETE_CHARACTER,
+    id
+});
