@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import IdListItem from './IdListItem';
 import weapons from '../objects/weapons';
+import NotFoundPage from './NotFoundPage';
 
 const ViewCharacterPage = (props) => {
     if(props.character !== undefined) {
@@ -50,12 +51,7 @@ const ViewCharacterPage = (props) => {
         );
     } else {
         return (
-            <div>
-                Character not found
-                <div>
-                    <Link to="/">Home</Link>
-                </div>
-            </div>
+            <NotFoundPage />
         );
     }
 };

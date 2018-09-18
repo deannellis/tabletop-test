@@ -1,6 +1,7 @@
 import React from 'react';
 import SingleRollDie from './SingleRollDie';
 import { Link } from 'react-router-dom';
+import NotFoundPage from './NotFoundPage';
 
 class DetailsForm extends React.Component {
     constructor(props){
@@ -79,13 +80,8 @@ class DetailsForm extends React.Component {
             )
         } else{
             return (
-                <div>
-                    Character not found
-                    <div>
-                        <Link to="/">Home</Link>
-                    </div>
-                </div>    
-            )
+                <NotFoundPage />    
+            );
         }
     }
     
