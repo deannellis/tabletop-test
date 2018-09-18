@@ -22,8 +22,7 @@ export default class AbilitiesForm extends React.Component {
     }
     
     render() {
-        if (this.props.currentCharacter !== undefined) {
-            return (
+        return (
                 <div>
                     {this.state.error && <p>{this.state.error}</p>}
                     <form onSubmit={this.onSubmit} >
@@ -37,11 +36,6 @@ export default class AbilitiesForm extends React.Component {
                     </form>
                 </div>
             );
-        } else{
-            return (
-                <NotFoundPage />    
-            );
-        }
     }
     
     handleRollDie = (result, attributeKey) => {

@@ -51,7 +51,8 @@ class EquipForm extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         this.props.onSubmit( this.props.currentCharacter.id, {
-            equipment: this.state.ids
+            equipment: this.state.ids,
+            gold: this.state.gold
         });
     }
     
