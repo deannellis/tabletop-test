@@ -10,7 +10,7 @@ class SpellForm extends React.Component {
         super(props);
         
         this.state = {
-            selectedOption: '',
+            selectedOption: null,
             error: ''
         };
     }
