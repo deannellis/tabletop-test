@@ -4,9 +4,17 @@ import { Link } from 'react-router-dom';
 import IdListItem from './IdListItem';
 import weapons from '../objects/weapons';
 import NotFoundPage from './NotFoundPage';
+import { removeCharacter } from '../actions/characters';
 
 const ViewCharacterPage = (props) => {
     if(props.character !== undefined) {
+        
+        const handleRemoveCharacter = () => {
+            const charId = props.character.id;
+            props.dispatch(removeCharacter({ id: charId }));
+            props.history.push('/');
+        };
+        
         return (
             <div>
                 <h1>{props.character.name}</h1>
@@ -47,6 +55,9 @@ const ViewCharacterPage = (props) => {
                     })}
                 </div>
                 <Link to="/">Back</Link>
+                <div>
+                    <button onClick={handleRemoveCharacter}>Delete Character</button>
+                </div>
             </div>    
         );
     } else {
