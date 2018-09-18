@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SingleRollDie from './SingleRollDie';
+import { Link } from 'react-router-dom';
 
 class DetailsForm extends React.Component {
     constructor(props){
@@ -17,8 +18,6 @@ class DetailsForm extends React.Component {
             refreshKey: 0,
             hpMessage: ''
         };
-        this.lastCharacter = this.props.characters[this.props.characters.length - 1];
-        this.lastCharCon = this.lastCharacter.abilities.constitution;
     }
     
     render() {
@@ -39,45 +38,56 @@ class DetailsForm extends React.Component {
                 goldMessage = 'roll die to determine gold';
         }
         
-        return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <h2>Roll for Hit Points</h2>
-                {this.renderDie('hp')}
-                <p>HP: {hpDefined ? this.state.hpMessage : 'roll for HP'}</p>
-                <h2>Roll for Gold</h2>
+        if (this.props.currentCharacter !== undefined) {
+            return (
                 <div>
-                    {this.renderDie('gold')}
-                    {this.renderDie('gold')}
-                    {this.renderDie('gold')}
-                    
-                    <p>
-                        Gold: {goldMessage}
-                    </p>
-                </div>
-                <form onSubmit={this.onSubmit}>
-                    <label>
-                        Character Name:
-                        <input
-                            type="text"
-                            placeholder="Character Name"
-                            autoFocus
-                            value={this.state.name}
-                            onChange={this.onNameChange}
-                        />
-                    </label>
-                    <textarea
-                        placeholder="Add a description of your character"
-                        className="textarea-input"
-                        value={this.state.description}
-                        onChange={this.onDescriptionChange}
-                    />
+                    {this.state.error && <p>{this.state.error}</p>}
+                    <h2>Roll for Hit Points</h2>
+                    {this.renderDie('hp')}
+                    <p>HP: {hpDefined ? this.state.hpMessage : 'roll for HP'}</p>
+                    <h2>Roll for Gold</h2>
                     <div>
-                        <button>Next Step</button>
+                        {this.renderDie('gold')}
+                        {this.renderDie('gold')}
+                        {this.renderDie('gold')}
+                        
+                        <p>
+                            Gold: {goldMessage}
+                        </p>
                     </div>
-                </form>
-            </div>    
-        );
+                    <form onSubmit={this.onSubmit}>
+                        <label>
+                            Character Name:
+                            <input
+                                type="text"
+                                placeholder="Character Name"
+                                autoFocus
+                                value={this.state.name}
+                                onChange={this.onNameChange}
+                            />
+                        </label>
+                        <textarea
+                            placeholder="Add a description of your character"
+                            className="textarea-input"
+                            value={this.state.description}
+                            onChange={this.onDescriptionChange}
+                        />
+                        <div>
+                            <button>Next Step</button>
+                        </div>
+                    </form>
+                </div>    
+            )
+        } else{
+            return (
+                <div>
+                    Character not found
+                    <div>
+                        <Link to="/">Home</Link>
+                    </div>
+                </div>    
+            )
+        }
     }
     
     onDescriptionChange = (e) => {
@@ -95,7 +105,7 @@ class DetailsForm extends React.Component {
         let attributeKey = attribute;
         
         if(attribute == 'hp'){
-            switch(this.lastCharacter.charClass) {
+            switch(this.props.currentCharacter.charClass) {
                 case 'cleric':
                     dieType = 6;
                     break;
@@ -120,26 +130,28 @@ class DetailsForm extends React.Component {
         );
     }
     
-    sum = (x, y, z) => {
-        return x + y + z;
-    }
+    // sum = (x, y, z) => {
+    //     return x + y + z;
+    // }
     
     handleRollDie = (result, attributeKey) => {
         let conModifier;
         let hpMessage;
         let finalHp;
         
-        if(this.lastCharCon <= 3) {
+        const currentCharCon = this.props.currentCharacter.abilities.constitution;
+        
+        if(currentCharCon <= 3) {
             conModifier = -3;
-        } else if(this.lastCharCon > 3 && this.lastCharCon <= 5) {
+        } else if(currentCharCon > 3 && currentCharCon <= 5) {
             conModifier = -2;
-        } else if(this.lastCharCon > 5 && this.lastCharCon <= 8) {
+        } else if(currentCharCon > 5 && currentCharCon <= 8) {
             conModifier = -1;
-        } else if(this.lastCharCon > 8 && this.lastCharCon <= 12) {
+        } else if(currentCharCon > 8 && currentCharCon <= 12) {
             conModifier = 0;
-        } else if(this.lastCharCon > 12 && this.lastCharCon <= 15) {
+        } else if(currentCharCon > 12 && currentCharCon <= 15) {
             conModifier = 1;
-        } else if(this.lastCharCon > 15 && this.lastCharCon <= 17) {
+        } else if(currentCharCon > 15 && currentCharCon <= 17) {
             conModifier = 2;
         } else {
             conModifier = 3;
@@ -169,7 +181,6 @@ class DetailsForm extends React.Component {
         }
         
         const rolls = this.state.goldRolls;
-        console.log(rolls);
         let goldTotal = rolls.reduce((a, b) => a + b, 0);
         
         if(this.state.goldRolls.length == 3) {
@@ -187,14 +198,13 @@ class DetailsForm extends React.Component {
         if(!this.state.gold || !this.state.hp || !this.state.name) {
             this.setState(() => ({error: 'Please complete all the steps'}));
         } else {
-            const characters = this.props.characters;
-            const lastCharacter = characters[characters.length - 1];
             this.setState(() => ({error: ''}));
-            this.props.onSubmit( lastCharacter.id, {
+            this.props.onSubmit( this.props.currentCharacter.id, {
                 hp: this.state.hp,
                 name: this.state.name,
                 description: this.state.description,
-                gold: this.state.gold
+                gold: this.state.gold,
+                inProgressStep: 5
             });
         }
     }
@@ -206,10 +216,4 @@ class DetailsForm extends React.Component {
     };
 }
 
-const mapStateToProps = (state) => {
-    return {
-        characters: state.characters
-    };
-};
-
-export default connect(mapStateToProps)(DetailsForm);
+export default connect()(DetailsForm);

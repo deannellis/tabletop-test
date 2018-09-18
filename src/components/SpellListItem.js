@@ -9,7 +9,6 @@ export default class SpellListItem extends React.Component {
     }
     
     render() {
-        // console.log("this.props.id:"+this.props.id);
         switch(this.props.spellType) {
             case 'magic-user':
                 if(this.props.type == 'magic-user' || this.props.type == undefined){

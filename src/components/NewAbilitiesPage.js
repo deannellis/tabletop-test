@@ -11,7 +11,7 @@ const NewAbilitiesPage = (props) => {
             <AbilitiesForm
                 onSubmit={(character) => {
                     props.dispatch(addCharacter(character));
-                    props.history.push('/new-char-step-2');
+                    props.history.push(`/new-char-step-2/${character.id}`);
                 }}
             />
         </div>

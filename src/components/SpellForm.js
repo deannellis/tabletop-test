@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import spells from '../objects/spells';
 import SpellListItem from './SpellListItem';
+import { Link } from 'react-router-dom';
 
 class SpellForm extends React.Component {
     constructor(props){
@@ -14,26 +15,34 @@ class SpellForm extends React.Component {
     }
     
     render () {
-        const characters = this.props.characters;
-        const lastCharacter = characters[characters.length - 1];
-        
-        return (
-            <div>
-                <h2>Choose a Spell</h2>
-                <form onSubmit={this.onSubmit}>
-                    {spells.map((spell) => {
-                        return <SpellListItem 
-                                    key={spell.id} 
-                                    {...spell}
-                                    spellType={'magic-user'}
-                                    selected={this.state.selectedOption}
-                                    handleSelectRadio={this.handleSelectRadio}
-                                />
-                    })}
-                    <button>Next Step</button>
-                </form>
-            </div>    
-        );
+        if (this.props.currentCharacter !== undefined) {
+            return (
+                <div>
+                    <h2>Choose a Spell</h2>
+                    <form onSubmit={this.onSubmit}>
+                        {spells.map((spell) => {
+                            return <SpellListItem 
+                                        key={spell.id} 
+                                        {...spell}
+                                        spellType={'magic-user'}
+                                        selected={this.state.selectedOption}
+                                        handleSelectRadio={this.handleSelectRadio}
+                                    />
+                        })}
+                        <button>Next Step</button>
+                    </form>
+                </div>    
+            )
+        } else{
+            return (
+                <div>
+                    Character not found
+                    <div>
+                        <Link to="/">Home</Link>
+                    </div>
+                </div>    
+            )
+        }
     }
     
     handleSelectRadio = (selection) => {
@@ -50,22 +59,15 @@ class SpellForm extends React.Component {
                 error: 'Please select a spell'
             }));
         } else {
-            const characters = this.props.characters;
-            const lastCharacter = characters[characters.length - 1];
             this.setState(() => ({
                 error: ''
             }));
-            this.props.onSubmit( lastCharacter.id, {
-                spells: [this.state.selectedOption]
+            this.props.onSubmit( this.props.currentCharacter.id, {
+                spells: [this.state.selectedOption],
+                inProgressStep: 5
             });
         }
     };
 }
 
-const mapStateToProps = (state) => {
-    return {
-        characters: state.characters
-    };
-};
-
-export default connect(mapStateToProps)(SpellForm);
+export default connect()(SpellForm);

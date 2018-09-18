@@ -18,11 +18,11 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" component={DashboardPage} exact={true} />
                 <Route path="/new-char-step-1" component={NewAbilitiesPage} />
-                <Route path="/new-char-step-2" component={NewRacePage} />
-                <Route path="/new-char-step-3" component={NewClassPage} />
-                <Route path="/new-char-step-4" component={NewDetailsPage} />
-                <Route path="/new-char-step-4.5" component={NewSpellPage} />
-                <Route path="/new-char-step-5" component={NewEquipPage} />
+                <Route path="/new-char-step-2/:id" component={NewRacePage} />
+                <Route path="/new-char-step-3/:id" component={NewClassPage} />
+                <Route path="/new-char-step-4/:id" component={NewDetailsPage} />
+                <Route path="/new-char-step-3.5/:id" component={NewSpellPage} />
+                <Route path="/new-char-step-5/:id" component={NewEquipPage} />
                 <Route path="/view-char/:id" component={ViewCharacterPage} />
                 <Route component={NotFoundPage} />
             </Switch>

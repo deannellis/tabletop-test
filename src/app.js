@@ -6,11 +6,12 @@ import configureStore from './store/configureStore';
 import { addCharacter } from './actions/characters';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import uuid from 'uuid';
 
 const store = configureStore();
 
-store.dispatch(addCharacter({ race: 'elf', charClass: 'fighter', name: 'Dugan', equipment: ['0','1','2','3']}));
-store.dispatch(addCharacter({ race: 'human', charClass: 'magic-User', name: 'Barfunk' }));
+store.dispatch(addCharacter({ id: uuid(), race: 'elf', charClass: 'fighter', name: 'Dugan', equipment: ['0','1','2','3']}));
+store.dispatch(addCharacter({ id: uuid(), race: 'human', charClass: 'magic-User', name: 'Barfunk' }));
 
 console.log(store.getState());
 

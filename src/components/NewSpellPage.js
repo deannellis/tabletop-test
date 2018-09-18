@@ -6,12 +6,19 @@ import SpellForm from './SpellForm';
 const NewSpellPage = (props) => (
     <div>
         <SpellForm
+            currentCharacter={props.currentCharacter}
             onSubmit={(id, character) => {
                 props.dispatch(editCharacter(id, character));
-                props.history.push('/new-char-step-4');
+                props.history.push(`/new-char-step-4/${id}`);
             }}
         />
     </div>    
 );
 
-export default connect()(NewSpellPage);
+const mapStateToProps = (state, props) => {
+    return {
+        currentCharacter: state.characters.find((character) => character.id === props.match.params.id)
+    };
+};
+
+export default connect(mapStateToProps)(NewSpellPage);
