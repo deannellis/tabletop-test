@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CharacterListItem = ({ name, charClass, race, id, inProgressStep }) => (
+export const CharacterListItem = ({ name, charClass, race, id, inProgressStep }) => (
     <div>
         <h2>{name}</h2>
         {race && <p>{race} {charClass && ` - ${charClass}`}</p>}

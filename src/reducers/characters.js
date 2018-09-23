@@ -1,5 +1,6 @@
 //  CHARACTERS REDUCER
-import actionIds from 'actions/actionIds';
+import actionIds from '../actions/actionIds';
+
 const {ADD_CHARACTER, REMOVE_CHARACTER, EDIT_CHARACTER, COMPLETE_CHARACTER} = actionIds;
 const charactersReducerDefaultState = [];
 

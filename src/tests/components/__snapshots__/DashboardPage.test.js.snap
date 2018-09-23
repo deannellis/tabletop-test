@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render DashboardPage correctly 1`] = `
+<div>
+  <Connect(CharacterList) />
+  <div>
+    <Link
+      replace={false}
+      to="/new-char-step-1"
+    >
+      Create New Character
+    </Link>
+  </div>
+</div>
+`;
