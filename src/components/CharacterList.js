@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CharacterListItem from './CharacterListItem';
 
-const CharacterList = (props) => (
+export const CharacterList = (props) => (
     <div>
-        <h1>Character List</h1>
         {props.characters.length > 0 ?
             <div>
                 {props.characters.map((character) => {

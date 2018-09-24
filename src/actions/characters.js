@@ -1,7 +1,7 @@
 // CHARACTERS ACTIONS
 
 // ADD_CHARACTER
-import actionIds from 'actions/actionIds';
+import actionIds from './actionIds';
 const {ADD_CHARACTER, REMOVE_CHARACTER, EDIT_CHARACTER, COMPLETE_CHARACTER} = actionIds;
 
 export const addCharacter = (

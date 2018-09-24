@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CharacterListItem with a character that does not have inProgressStep key 1`] = `
+<div>
+  <h2>
+    Rick Slick
+  </h2>
+  <p>
+    human
+     
+     - magic-user
+  </p>
+  <Link
+    replace={false}
+    to="/view-char/3a7b71ef-fb4e-4bde-a2c8-17cd5b9f4097"
+  >
+    View Character
+  </Link>
+</div>
+`;
+
+exports[`should render CharacterListItem with a character that has inProgressStep key 1`] = `
+<div>
+  <h2>
+    Rick Slick
+  </h2>
+  <p>
+    human
+     
+     - magic-user
+  </p>
+  <Link
+    replace={false}
+    to="/new-char-step-2/3a7b71ef-fb4e-4bde-a2c8-17cd5b9f4097"
+  >
+    Finish Character
+  </Link>
+</div>
+`;

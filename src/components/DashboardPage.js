@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CharacterList from './CharacterList';
 
-const DashboardPage = () => (
+export const DashboardPage = () => (
     <div>
         <CharacterList />
         <div>
