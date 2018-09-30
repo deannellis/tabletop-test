@@ -337,3 +337,60 @@ exports[`should render class form without props (character not found) 1`] = `
   </div>
 </div>
 `;
+
+exports[`should render error for invalid submission 1`] = `
+<div>
+  <h2>
+    Select Your Class
+  </h2>
+  <p>
+    Please select a class
+  </p>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="cleric"
+        />
+        Cleric
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="fighter"
+        />
+        Fighter
+      </label>
+    </div>
+    <p>
+      Magic-User: Dwarves cannot be Magic-Users
+    </p>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="thief"
+        />
+        Thief
+      </label>
+    </div>
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
