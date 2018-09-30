@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render class form without props (character not found) 1`] = `<NotFoundPage />`;
+
+exports[`should render error for invalid submission 1`] = `
+<div>
+  <h2>
+    Choose a Spell
+  </h2>
+  <p>
+    Please select a spell
+  </p>
+  <form
+    onSubmit={[Function]}
+  >
+    <Component
+      duration="special"
+      handleSelectRadio={[Function]}
+      id={0}
+      key="0"
+      level={1}
+      longDescription="This spell makes a humanoid creature of 4 hit dice or less regard the caster as its trusted friend and ally. And more..."
+      name="Charm Person"
+      range="30ft"
+      selected={null}
+      shortDescription="This spell makes a humanoid creature regard the caster as its trusted friend and ally."
+      spellType="magic-user"
+      type="magic-user"
+    />
+    <Component
+      duration="2 turns"
+      handleSelectRadio={[Function]}
+      id={1}
+      key="1"
+      level={1}
+      longDescription="The caster of this spell is able to detect enchanted or enspelled objects or creatures within the given range by sight, seeing them surrounded by a pale glowing light. And more..."
+      name="Detect Magic"
+      range="60ft"
+      selected={null}
+      shortDescription="The caster of this spell is able to detect magic objects or creatures."
+      spellType="magic-user"
+    />
+    <Component
+      duration="5 turns + 1/level"
+      handleSelectRadio={[Function]}
+      id={2}
+      key="2"
+      level={1}
+      longDescription="This spell creates an invisible, slightly concave circular plane of force for carrying loads. And more..."
+      name="Floating Disc"
+      range="10ft"
+      selected={null}
+      shortDescription="This spell creates an invisible plane of force for carrying loads."
+      spellType="magic-user"
+      type="magic-user"
+    />
+    <Component
+      duration="1 round/level"
+      handleSelectRadio={[Function]}
+      id={3}
+      key="3"
+      level={1}
+      longDescription="This spell magically holds shut a door, gate, window, or shutter of wood, metal, or stone. And more..."
+      name="Hold Portal"
+      range="100ft + 10ft/level"
+      selected={null}
+      shortDescription="This spell magically holds shut a portal (door, gate, window, etc)"
+      spellType="magic-user"
+      type="magic-user"
+    />
+    <Component
+      duration="6 turns + 1/level"
+      handleSelectRadio={[Function]}
+      id={4}
+      key="4"
+      level={1}
+      longDescription="This spell creates a light equal to torchlight which illuminates a 30ft radius area (and provides dim light for an additional 20) around the target location or object. And more..."
+      name="Light"
+      range="120ft"
+      selected={null}
+      shortDescription="This spell creates a light equal to torchlight"
+      spellType="magic-user"
+    />
+    <Component
+      duration="instantaneous"
+      handleSelectRadio={[Function]}
+      id={5}
+      key="5"
+      level={1}
+      longDescription="With this spell the caster heals 1d6+1 hit points of damage by laying his or her hand upon the injured creature."
+      name="Cure Light Wounds"
+      range="touch"
+      selected={null}
+      shortDescription="The caster heals 1d6+1 hit points of damage"
+      spellType="magic-user"
+      type="cleric"
+    />
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render spell form with props 1`] = `
+<div>
+  <h2>
+    Choose a Spell
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <Component
+      duration="special"
+      handleSelectRadio={[Function]}
+      id={0}
+      key="0"
+      level={1}
+      longDescription="This spell makes a humanoid creature of 4 hit dice or less regard the caster as its trusted friend and ally. And more..."
+      name="Charm Person"
+      range="30ft"
+      selected={null}
+      shortDescription="This spell makes a humanoid creature regard the caster as its trusted friend and ally."
+      spellType="magic-user"
+      type="magic-user"
+    />
+    <Component
+      duration="2 turns"
+      handleSelectRadio={[Function]}
+      id={1}
+      key="1"
+      level={1}
+      longDescription="The caster of this spell is able to detect enchanted or enspelled objects or creatures within the given range by sight, seeing them surrounded by a pale glowing light. And more..."
+      name="Detect Magic"
+      range="60ft"
+      selected={null}
+      shortDescription="The caster of this spell is able to detect magic objects or creatures."
+      spellType="magic-user"
+    />
+    <Component
+      duration="5 turns + 1/level"
+      handleSelectRadio={[Function]}
+      id={2}
+      key="2"
+      level={1}
+      longDescription="This spell creates an invisible, slightly concave circular plane of force for carrying loads. And more..."
+      name="Floating Disc"
+      range="10ft"
+      selected={null}
+      shortDescription="This spell creates an invisible plane of force for carrying loads."
+      spellType="magic-user"
+      type="magic-user"
+    />
+    <Component
+      duration="1 round/level"
+      handleSelectRadio={[Function]}
+      id={3}
+      key="3"
+      level={1}
+      longDescription="This spell magically holds shut a door, gate, window, or shutter of wood, metal, or stone. And more..."
+      name="Hold Portal"
+      range="100ft + 10ft/level"
+      selected={null}
+      shortDescription="This spell magically holds shut a portal (door, gate, window, etc)"
+      spellType="magic-user"
+      type="magic-user"
+    />
+    <Component
+      duration="6 turns + 1/level"
+      handleSelectRadio={[Function]}
+      id={4}
+      key="4"
+      level={1}
+      longDescription="This spell creates a light equal to torchlight which illuminates a 30ft radius area (and provides dim light for an additional 20) around the target location or object. And more..."
+      name="Light"
+      range="120ft"
+      selected={null}
+      shortDescription="This spell creates a light equal to torchlight"
+      spellType="magic-user"
+    />
+    <Component
+      duration="instantaneous"
+      handleSelectRadio={[Function]}
+      id={5}
+      key="5"
+      level={1}
+      longDescription="With this spell the caster heals 1d6+1 hit points of damage by laying his or her hand upon the injured creature."
+      name="Cure Light Wounds"
+      range="touch"
+      selected={null}
+      shortDescription="The caster heals 1d6+1 hit points of damage"
+      spellType="magic-user"
+      type="cleric"
+    />
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;

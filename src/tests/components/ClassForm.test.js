@@ -9,6 +9,11 @@ test('should render class form without props (character not found)', () => {
     expect(wrapper).toMatchSnapshot();
 });
 
+test('should render class form with props (all options enabled)', () => {
+    const wrapper = shallow(<ClassForm currentCharacter={characters[0]}/>);
+    expect(wrapper).toMatchSnapshot();
+});
+
 test('should render class form with dwarf (magic-user disabled)', () => {
     const wrapper = shallow(<ClassForm currentCharacter={characters[1]}/>);
     expect(wrapper).toMatchSnapshot();
@@ -57,7 +62,7 @@ test('should set selected option on change', () => {
     expect(wrapper.state('selectedOption')).toBe(value);
 });
 
-test('should call onSubmit prop for valid submission', () => {
+test('should call onSubmit prop for valid submission for non-magic-user', () => {
     const onSubmitSpy = jest.fn();
     const wrapper = shallow(<ClassForm currentCharacter={characters[1]} onSubmit={onSubmitSpy} />);
     const value = "cleric";
@@ -73,6 +78,26 @@ test('should call onSubmit prop for valid submission', () => {
         {
             charClass: value,
             inProgressStep: '4'
+        }
+    );
+});
+
+test('should call onSubmit prop for valid submission for magic-user', () => {
+    const onSubmitSpy = jest.fn();
+    const wrapper = shallow(<ClassForm currentCharacter={characters[1]} onSubmit={onSubmitSpy} />);
+    const value = "magic-user";
+    wrapper.find('input').at(2).simulate('change', {
+       target: { value }
+    });
+    wrapper.find('form').simulate('submit', {
+        preventDefault: () => {}
+    });
+    expect(wrapper.state('error')).toBe('');
+    expect(onSubmitSpy).toHaveBeenLastCalledWith(
+        characters[1].id,
+        {
+            charClass: value,
+            inProgressStep: '3.5'
         }
     );
 });

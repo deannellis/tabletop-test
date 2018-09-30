@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render equip form with props 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    Equip form
+    <h3>
+      109
+    </h3>
+    <Component
+      currentGold={109}
+      damage={6}
+      handleToggleCheckbox={[Function]}
+      id={0}
+      key="0"
+      name="Hand Axe"
+      price={400}
+      range={1}
+      size={1}
+      weight={5}
+    />
+    <Component
+      currentGold={109}
+      damage={8}
+      handleToggleCheckbox={[Function]}
+      id={1}
+      key="1"
+      name="Battle Axe"
+      price={700}
+      range={1}
+      size={2}
+      weight={7}
+    />
+    <Component
+      currentGold={109}
+      damage={10}
+      handleToggleCheckbox={[Function]}
+      id={2}
+      key="2"
+      name="Great Axe"
+      price={1400}
+      range={1}
+      size={3}
+      weight={10}
+    />
+    <Component
+      currentGold={109}
+      damage={10}
+      handleToggleCheckbox={[Function]}
+      id={3}
+      key="3"
+      name="Shortbow"
+      price={2500}
+      range={
+        Array [
+          70,
+          140,
+          210,
+        ]
+      }
+      size={2}
+      weight={2}
+    />
+    <button>
+      Finish
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render equip form without props (character not found) 1`] = `<NotFoundPage />`;

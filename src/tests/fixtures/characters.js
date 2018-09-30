@@ -2,9 +2,9 @@
 
 export default [{
     abilities: { // Index 0
-        charisma: 8,
-        constitution: 8,
-        dexterity: 7,
+        charisma: 9,
+        constitution: 9,
+        dexterity: 9,
         intelligence: 14,
         strength: 11,
         wisdom: 11
@@ -61,7 +61,7 @@ export default [{
 }, {
     abilities: { // Index 3
         charisma: 9,
-        constitution: 9,
+        constitution: 4,
         dexterity: 9,
         intelligence: 9,
         strength: 9,
