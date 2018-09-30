@@ -1,0 +1,339 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render class form with dwarf (magic-user disabled) 1`] = `
+<div>
+  <h2>
+    Select Your Class
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="cleric"
+        />
+        Cleric
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="fighter"
+        />
+        Fighter
+      </label>
+    </div>
+    <p>
+      Magic-User: Dwarves cannot be Magic-Users
+    </p>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="thief"
+        />
+        Thief
+      </label>
+    </div>
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render class form with halfling (figther disabled) 1`] = `
+<div>
+  <h2>
+    Select Your Class
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="cleric"
+        />
+        Cleric
+      </label>
+    </div>
+    <p>
+      Fighter: Halflings cannot be fighters
+    </p>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="magic-user"
+        />
+        Magic-User
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="thief"
+        />
+        Thief
+      </label>
+    </div>
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render class form with low dexterity (thief disabled) 1`] = `
+<div>
+  <h2>
+    Select Your Class
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="cleric"
+        />
+        Cleric
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="fighter"
+        />
+        Fighter
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="magic-user"
+        />
+        Magic-User
+      </label>
+    </div>
+    <p>
+      Thief: Your dexterity score is too low
+    </p>
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render class form with low intelligence (magic-user disabled) 1`] = `
+<div>
+  <h2>
+    Select Your Class
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="cleric"
+        />
+        Cleric
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="fighter"
+        />
+        Fighter
+      </label>
+    </div>
+    <p>
+      Magic-User: Your intelligence score is too low
+    </p>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="thief"
+        />
+        Thief
+      </label>
+    </div>
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render class form with low strength (figther disabled) 1`] = `
+<div>
+  <h2>
+    Select Your Class
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="cleric"
+        />
+        Cleric
+      </label>
+    </div>
+    <p>
+      Fighter: Your strength score is too low
+    </p>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="magic-user"
+        />
+        Magic-User
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="thief"
+        />
+        Thief
+      </label>
+    </div>
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render class form with low wisdom (cleric disabled) 1`] = `
+<div>
+  <h2>
+    Select Your Class
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <p>
+      Cleric: Your wisdom score is too low
+    </p>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="fighter"
+        />
+        Fighter
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="magic-user"
+        />
+        Magic-User
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          checked={false}
+          name="class"
+          onChange={[Function]}
+          type="radio"
+          value="thief"
+        />
+        Thief
+      </label>
+    </div>
+    <button>
+      Next Step
+    </button>
+  </form>
+</div>
+`;
+
+exports[`should render class form without props (character not found) 1`] = `
+<div>
+  Character not found
+  <div>
+    <Link
+      replace={false}
+      to="/"
+    >
+      Home
+    </Link>
+  </div>
+</div>
+`;

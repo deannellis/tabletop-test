@@ -21,10 +21,12 @@ class ClassForm extends React.Component {
             let canFighter = true;
             let canMagicUser = true;
             let canThief = true;
+            const isHalfling = currentCharacter.race == 'halfling';
+            const isDwarf = currentCharacter.race == 'dwarf';
             
-            if(currentCharacter.race == 'dwarf') {
+            if(isDwarf) {
                 canMagicUser = false;
-            } else if (currentCharacter.race == 'halfling') {
+            } else if (isHalfling) {
                 canFighter = false;
             }
             
@@ -61,7 +63,7 @@ class ClassForm extends React.Component {
                                 </label>
                             </div> 
                             : 
-                            <p>Cleric: Your ability scores are insufficient</p>
+                            <p>Cleric: Your wisdom score is too low</p>
                         }
                         {canFighter 
                             ? 
@@ -74,8 +76,8 @@ class ClassForm extends React.Component {
                                     Fighter
                                 </label>
                             </div> 
-                            : 
-                            <p>Fighter: Your ability scores are insufficient</p>
+                            :
+                            <p>{isHalfling ? 'Fighter: Halflings cannot be fighters' : 'Fighter: Your strength score is too low' }</p>
                         }
                         {canMagicUser 
                             ? 
@@ -89,7 +91,7 @@ class ClassForm extends React.Component {
                                 </label>
                             </div> 
                             : 
-                            <p>Magic-User: Your ability scores are insufficient</p>
+                            <p>{isDwarf ? 'Magic-User: Dwarves cannot be Magic-Users' : 'Magic-User: Your intelligence score is too low' }</p>
                         }
                         {canThief 
                             ? 
@@ -103,7 +105,7 @@ class ClassForm extends React.Component {
                                 </label>
                             </div> 
                             : 
-                            <p>Thief: Your ability scores are insufficient</p>
+                            <p>Thief: Your dexterity score is too low</p>
                         }
                         <button>Next Step</button>
                     </form>

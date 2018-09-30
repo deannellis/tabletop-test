@@ -38,7 +38,7 @@ test('should remove character by id', () => {
         id: characters[0].id
     };
     const state = charactersReducer(characters, action);
-    expect(state).toEqual([characters[1], characters[2]]);
+    expect(state).toEqual([characters[1], characters[2], characters[3], characters[4], characters[5], characters[6]]);
 });
 
 test('should not remove character if id is not found', () => {
