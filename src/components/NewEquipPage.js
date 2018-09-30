@@ -3,19 +3,23 @@ import { connect } from 'react-redux';
 import EquipForm from './EquipForm';
 import { editCharacter, completeCharacter } from '../actions/characters';
 
-const NewEquipPage = (props) => (
-    <div>
-        Create Character Step 5
-        <EquipForm 
-            currentCharacter={props.currentCharacter}
-            onSubmit={(id, character) => {
-                props.dispatch(editCharacter(id, character));
-                props.dispatch(completeCharacter({id}));
-                props.history.push('/');
-            }}
-        />
-    </div>
-);
+export class NewEquipPage extends React.Component {
+    onSubmit = (id, character) => {
+        this.props.onSubmit(id, character);
+        this.props.history.push('/');
+    };
+    
+    render() {
+        return (
+            <div>
+                <EquipForm 
+                    currentCharacter={this.props.currentCharacter}
+                    onSubmit={this.onSubmit}
+                />
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = (state, props) => {
     return {
@@ -23,4 +27,13 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-export default connect(mapStateToProps)(NewEquipPage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSubmit: (id, character) => {
+            dispatch(editCharacter(id, character));
+            dispatch(completeCharacter({id}));
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewEquipPage);
