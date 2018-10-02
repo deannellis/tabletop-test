@@ -18,6 +18,7 @@ export default [{
     name: 'Rick Slick',
     race: 'human',
     spells: [ '1' ],
+    weapons: [ '1' ],
     xp: 0,
     inProgressStep:2
 }, {

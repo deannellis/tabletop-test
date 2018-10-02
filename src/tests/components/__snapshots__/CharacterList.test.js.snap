@@ -34,6 +34,11 @@ exports[`should render CharacterList with characters 1`] = `
           "1",
         ]
       }
+      weapons={
+        Array [
+          "1",
+        ]
+      }
       xp={0}
     />
     <CharacterListItem

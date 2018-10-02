@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render view character page with props 1`] = `
+<div>
+  <h1>
+    Rick Slick
+  </h1>
+  <p>
+    Loves his Mom
+  </p>
+  <p>
+    human
+     - 
+    magic-user
+  </p>
+  <h2>
+    Ability Scores
+  </h2>
+  <p>
+    Strength: 11
+  </p>
+  <p>
+    Intelligence: 14
+  </p>
+  <p>
+    Wisdom: 11
+  </p>
+  <p>
+    Dexterity: 9
+  </p>
+  <p>
+    Charisma: 9
+  </p>
+  <p>
+    Constitution: 9
+  </p>
+  <p>
+    HP: 1
+  </p>
+  <p>
+    XP: 0
+  </p>
+  <p>
+    Gold: 109
+  </p>
+  <div>
+    <h3>
+      Spells:
+    </h3>
+    <div>
+      <Component
+        id="1"
+        key="1"
+        obj="spells"
+      />
+    </div>
+  </div>
+  <h3>
+    Equipmunk:
+  </h3>
+  <div>
+    <Component
+      id={0}
+      key="0"
+      obj="weapons"
+    />
+    <Component
+      id={1}
+      key="1"
+      obj="weapons"
+    />
+  </div>
+  <Link
+    replace={false}
+    to="/"
+  >
+    Back
+  </Link>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Delete Character
+    </button>
+  </div>
+</div>
+`;
+
+exports[`should render view character page without props 1`] = `<NotFoundPage />`;

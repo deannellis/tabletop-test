@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render checkbox with no props 1`] = `
+<div
+  className="checkbox"
+>
+  <label>
+    <input
+      checked={false}
+      onChange={[Function]}
+      type="checkbox"
+      value={false}
+    />
+  </label>
+</div>
+`;
+
+exports[`should render checkbox with props 1`] = `
+<div
+  className="checkbox"
+>
+  <label>
+    <input
+      checked={false}
+      disabled={true}
+      onChange={[Function]}
+      type="checkbox"
+      value={false}
+    />
+    Test Label
+  </label>
+</div>
+`;

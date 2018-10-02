@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render weapon that can be purchased 1`] = `
+<div>
+  <h2>
+    Hand Axe
+  </h2>
+  <p>
+    damage: 
+    6
+  </p>
+  <p>
+    price: 
+    4
+    gp
+  </p>
+  <p>
+    weight: 
+    5
+  </p>
+  <p />
+  <Checkbox
+    handleCheckboxChange={[Function]}
+    isDisabled={false}
+    key="Hand Axe"
+    label="Select Hand Axe"
+  />
+</div>
+`;
+
+exports[`should render weapon that cannot be purchased (checkbox disabled) 1`] = `
+<div>
+  <h2>
+    Hand Axe
+  </h2>
+  <p>
+    damage: 
+    6
+  </p>
+  <p>
+    price: 
+    4
+    gp
+  </p>
+  <p>
+    weight: 
+    5
+  </p>
+  <p />
+  <Checkbox
+    handleCheckboxChange={[Function]}
+    isDisabled={true}
+    key="Hand Axe"
+    label="Select Hand Axe"
+  />
+</div>
+`;
