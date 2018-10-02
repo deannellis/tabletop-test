@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render spell list item regardless of spellType prop 1`] = `
+<div>
+  <label>
+    <input
+      checked={false}
+      name="class"
+      onChange={[Function]}
+      type="radio"
+      value={1}
+    />
+    Detect Magic
+  </label>
+  <p>
+    The caster of this spell is able to detect magic objects or creatures.
+  </p>
+</div>
+`;
+
+exports[`should render spell list item with cleric prop 1`] = `
+<div>
+  <label>
+    <input
+      checked={false}
+      name="class"
+      onChange={[Function]}
+      type="radio"
+      value={5}
+    />
+    Cure Light Wounds
+  </label>
+  <p>
+    The caster heals 1d6+1 hit points of damage
+  </p>
+</div>
+`;
+
+exports[`should render spell list item with magic-user prop 1`] = `
+<div>
+  <label>
+    <input
+      checked={false}
+      name="class"
+      onChange={[Function]}
+      type="radio"
+      value={0}
+    />
+    Charm Person
+  </label>
+  <p>
+    This spell makes a humanoid creature regard the caster as its trusted friend and ally.
+  </p>
+</div>
+`;

@@ -20,6 +20,7 @@ class SpellForm extends React.Component {
             return (
                 <div>
                     <h2>Choose a Spell</h2>
+                    {this.state.error && <p>{this.state.error}</p>}
                     <form onSubmit={this.onSubmit}>
                         {spells.map((spell) => {
                             return <SpellListItem 
@@ -49,7 +50,7 @@ class SpellForm extends React.Component {
     
     onSubmit = (e) => {
         e.preventDefault();
-        if(!this.state.selectedOption) {
+        if(this.state.selectedOption == null) {
             this.setState(() => ({
                 error: 'Please select a spell'
             }));

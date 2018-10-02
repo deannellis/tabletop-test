@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render NewEquipPage correctly 1`] = `
+<div>
+  <EquipForm
+    onSubmit={[Function]}
+  />
+</div>
+`;

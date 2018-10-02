@@ -3,17 +3,23 @@ import { connect } from 'react-redux';
 import { editCharacter } from '../actions/characters';
 import SpellForm from './SpellForm';
 
-const NewSpellPage = (props) => (
-    <div>
-        <SpellForm
-            currentCharacter={props.currentCharacter}
-            onSubmit={(id, character) => {
-                props.dispatch(editCharacter(id, character));
-                props.history.push(`/new-char-step-4/${id}`);
-            }}
-        />
-    </div>    
-);
+export class NewSpellPage extends React.Component {
+    onSubmit = (id, character) => {
+        this.props.onSubmit(id, character);
+        this.props.history.push(`/new-char-step-4/${id}`);
+    };
+    
+    render() {
+        return (
+            <div>
+                <SpellForm 
+                    currentCharacter={this.props.currentCharacter}
+                    onSubmit={this.onSubmit}
+                />
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = (state, props) => {
     return {
@@ -21,4 +27,8 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-export default connect(mapStateToProps)(NewSpellPage);
+const mapDispatchToProps = (dispatch) => ({
+    onSubmit: (id, character) => dispatch(editCharacter(id, character))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewSpellPage);

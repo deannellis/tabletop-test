@@ -3,17 +3,23 @@ import { connect } from 'react-redux';
 import RaceForm from './RaceForm';
 import { editCharacter } from '../actions/characters';
 
-const NewRacePage = (props) => (
-    <div>
-        <RaceForm 
-            currentCharacter={props.currentCharacter}
-            onSubmit={(id, character) => {
-                props.dispatch(editCharacter(id, character));
-                props.history.push(`/new-char-step-3/${id}`);
-            }}
-        />
-    </div>
-);
+export class NewRacePage extends React.Component {
+    onSubmit = (id, character) => {
+        this.props.onSubmit(id, character);
+        this.props.history.push(`/new-char-step-3/${id}`);
+    };
+    
+    render() {
+        return (
+            <div>
+                <RaceForm 
+                    currentCharacter={this.props.currentCharacter}
+                    onSubmit={this.onSubmit}
+                />
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = (state, props) => {
     return {
@@ -21,4 +27,8 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-export default connect(mapStateToProps)(NewRacePage);
+const mapDispatchToProps = (dispatch) => ({
+    onSubmit: (id, character) => dispatch(editCharacter(id, character))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewRacePage);

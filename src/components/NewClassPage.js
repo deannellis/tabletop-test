@@ -3,17 +3,23 @@ import { connect } from 'react-redux';
 import ClassForm from './ClassForm';
 import { editCharacter } from '../actions/characters';
 
-const NewClassPage = (props) => (
-    <div>
-        <ClassForm 
-            currentCharacter={props.currentCharacter}
-            onSubmit={(id, character) => {
-                props.dispatch(editCharacter(id, character));
-                props.history.push(`/new-char-step-${character.inProgressStep}/${id}`)
-            }}
-        />
-    </div>
-);
+export class NewClassPage extends React.Component {
+    onSubmit = (id, character) => {
+        this.props.onSubmit(id, character);
+        this.props.history.push(`/new-char-step-${character.inProgressStep}/${id}`);
+    };
+    
+    render() {
+        return (
+            <div>
+                <ClassForm 
+                    currentCharacter={this.props.currentCharacter}
+                    onSubmit={this.onSubmit}
+                />
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = (state, props) => {
     return {
@@ -21,4 +27,8 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-export default connect(mapStateToProps)(NewClassPage);
+const mapDispatchToProps = (dispatch) => ({
+    onSubmit: (id, character) => dispatch(editCharacter(id, character))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewClassPage);

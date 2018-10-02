@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render id list item with spell props 1`] = `
+<div>
+  <div>
+    <p>
+      Charm Person
+    </p>
+  </div>
+</div>
+`;
+
+exports[`should render id list item with weapon props 1`] = `
+<div>
+  <div>
+    <h2>
+      Hand Axe
+    </h2>
+    <p>
+      damage: 
+      6
+    </p>
+    <p>
+      price: 
+      4
+      gp
+    </p>
+    <p>
+      weight: 
+      5
+    </p>
+    <p />
+  </div>
+</div>
+`;
